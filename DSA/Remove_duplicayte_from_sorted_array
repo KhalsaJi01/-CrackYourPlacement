@@ -1,0 +1,18 @@
+class Solution {
+public:
+    int removeDuplicates(vector<int>& nums) {
+        int count=0;
+        int  n= nums.size();
+        set<int>s;
+        for(int i=0;i<n;i++)
+        {
+            s.insert(nums[i]);
+        }
+        for(auto itr:s)
+        {
+            nums[count++]=itr;
+        }
+        return s.size();
+        
+    }
+};
