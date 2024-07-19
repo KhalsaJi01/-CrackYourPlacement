@@ -1,0 +1,30 @@
+class Solution {
+public:
+    int maxArea(vector<int>& height) {
+        int n = height.size();
+        int right=n-1;
+        int left=0;
+        int max=0;
+        while(left<right)
+        {
+            int diff=right-left;
+            int mul=min(height[left],height[right]);
+            int sum = mul*diff;
+            cout<<sum;
+            if(sum>max)
+            {
+                max=sum;
+            }
+            if(height[left]>height[right])
+            {
+                right--;
+            }
+            else{
+                left++;
+            }
+        }
+        return max;
+
+        
+    }
+};

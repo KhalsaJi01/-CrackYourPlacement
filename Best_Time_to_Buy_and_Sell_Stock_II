@@ -1,0 +1,31 @@
+class Solution {
+public:
+int solve(vector<int>& prices,bool buy,int n,int index,vector<vector<int>>&dp)
+{
+    if(index==n)
+    {
+        return 0;
+    }
+    if(dp[index][buy]!=-1)
+    {
+        return dp[index][buy];
+    }
+    if(buy)
+    {
+        return dp[index][buy]=(max(prices[index]+solve(prices,false,n,index+1,dp),solve(prices,true,n,index+1,dp)));
+    }
+    else
+    {
+        return dp[index][buy]=(max(-prices[index]+solve(prices,true,n,index+1,dp),solve(prices,false,n,index+1,dp)));
+    }
+
+
+}
+    int maxProfit(vector<int>& prices) {
+        bool buy=false;
+        int n= prices.size();
+        vector<vector<int>>dp(n,vector<int>(2,-1));
+        return solve(prices,buy,n,0,dp);
+
+    }
+};
